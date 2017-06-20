@@ -34,9 +34,11 @@ RUN ls -l
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
+RUN rm -rf build.txt
 RUN \
-  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
-  sed -i "s/@@__BUILT__@@/${DATE}/g" ./src/main/webapp/build.txt
+  touch build.txt && \
+  echo "$OPENSHIFT_BUILD_COMMIT" >> build.txt
+ 
 
 
 # Build CCM and place the resulting war in the tomcat dir.
