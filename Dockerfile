@@ -23,11 +23,9 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 # Copy CCM code to local directory for building
 COPY . /tmp
 # version info
-RUN \
-  VERSION=$(git rev-parse --short HEAD) && \
-  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
-  if ! [[ -z "`git status -s`" ]]; then VERSION="!! DIRTY ${VERSION}"; fi && \
-  sed -i "s/@@__VERSION__@@/${VERSION}/g;s/@@__BUILT__@@/${DATE}/g" src/main/webapp/build.txt
+
+RUN touch ./src/main/webapp/build.txt \
+    sed -i "hellow" ./src/main/webapp/build.txt
 
 # Build CCM and place the resulting war in the tomcat dir.
 RUN mvn clean install \
