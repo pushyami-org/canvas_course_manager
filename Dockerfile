@@ -34,17 +34,16 @@ RUN ls -l
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
+
+# Build CCM and place the resulting war in the tomcat dir.
+RUN mvn clean install \
+ && mv ./target/canvasCourseManager.war /usr/local/tomcat/webapps
+ 
 RUN rm -rf build.txt
 RUN \
   touch build.txt && \
   echo 'hellow' >> build.txt
  RUN cat build.txt
- 
-
-
-# Build CCM and place the resulting war in the tomcat dir.
-RUN mvn clean install \
- && mv ./target/canvasCourseManager.war /usr/local/tomcat/webapps
 
 # Remove unnecessary build dependencies.
 RUN apt-get remove -y maven openjdk-8-jdk git \
