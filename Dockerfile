@@ -26,8 +26,12 @@ COPY . /tmp
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
-RUN touch ./src/main/webapp/build.txt \
-    echo 'hello' >> ./src/main/webapp/build.txt
+RUN \
+  VERSION=$(git rev-parse --short HEAD) && \
+  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
+  if ! [[ -z "`git status -s`" ]]; then VERSION="!! DIRTY ${VERSION}"; fi && \
+  sed -i "s/@@__VERSION__@@/${VERSION}/g;s/@@__BUILT__@@/${DATE}/g" ./src/main/webapp/build.txt
+
 
 # Build CCM and place the resulting war in the tomcat dir.
 RUN mvn clean install \
