@@ -38,6 +38,13 @@ RUN apt-get remove -y maven openjdk-8-jdk git \
 
 WORKDIR /usr/local/tomcat/webapps
 
+# version info
+RUN \
+  VERSION=$(git rev-parse --short HEAD) && \
+  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
+  if ! [[ -z "`git status -s`" ]]; then VERSION="!! DIRTY ${VERSION}"; fi && \
+  sed -i "s/@@__VERSION__@@/${VERSION}/g;s/@@__BUILT__@@/${DATE}/g" build.txt
+
 # Set Opts, including paths for the CCM properties.
 ENV JAVA_OPTS="-server \
 -Xmx1028m \
