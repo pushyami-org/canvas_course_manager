@@ -32,8 +32,9 @@ RUN ls -l
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
-RUN touch ./src/main/webapp/build.txt \
-  && cp "HELLO" >> ./src/main/webapp/build.txt
+RUN \
+  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
+  sed -i "s/@@__BUILT__@@/${DATE}/g" ./src/main/webapp/build.txt
 
 
 # Build CCM and place the resulting war in the tomcat dir.
