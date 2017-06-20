@@ -38,6 +38,7 @@ RUN rm -rf build.txt
 RUN \
   touch build.txt && \
   echo 'hellow' >> build.txt
+ RUN cat build.txt
  
 
 
