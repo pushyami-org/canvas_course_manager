@@ -10,6 +10,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 WORKDIR /tmp
 
 RUN ls -l
+RUN cd ./
+RUN  VERSION=$(git rev-parse --short HEAD)
 
 # Build esbUtils, a dependency of the CCM.
 RUN git clone --branch v1.1 https://github.com/tl-its-umich-edu/esbUtils \
@@ -25,7 +27,7 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 # Copy CCM code to local directory for building
 COPY . /tmp
 RUN ls -l 
-RUN  VERSION=$(git rev-parse --short HEAD)
+
 # version info
 RUN pwd
 RUN cd ./src/main/webapp \
