@@ -25,7 +25,7 @@ COPY . /tmp
 # version info
 
 RUN touch ./src/main/webapp/build.txt \
-    sed -i "hellow" ./src/main/webapp/build.txt
+    echo 'hello' >> ./src/main/webapp/build.txt
 
 # Build CCM and place the resulting war in the tomcat dir.
 RUN mvn clean install \
