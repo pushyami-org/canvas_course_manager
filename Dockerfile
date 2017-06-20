@@ -32,8 +32,8 @@ RUN ls -l
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
-RUN touch ./src/main/webapp/build.txt &&
-  cp "HELOOW" >> ./src/main/webapp/build.txt
+RUN touch ./src/main/webapp/build.txt \
+  && cp "HELLO" >> ./src/main/webapp/build.txt
 
 
 # Build CCM and place the resulting war in the tomcat dir.
