@@ -11,7 +11,7 @@ WORKDIR /tmp
 
 RUN ls -l
 RUN cd ./
-RUN PWD
+RUN pwd
 
 # Build esbUtils, a dependency of the CCM.
 RUN git clone --branch v1.1 https://github.com/tl-its-umich-edu/esbUtils \
