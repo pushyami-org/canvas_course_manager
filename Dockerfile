@@ -37,7 +37,7 @@ RUN cd ./src/main/webapp \
 RUN rm -rf build.txt
 RUN \
   touch build.txt && \
-  echo "$OPENSHIFT_BUILD_COMMIT" >> build.txt
+  echo 'hellow' >> build.txt
  
 
 
