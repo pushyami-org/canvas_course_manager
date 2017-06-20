@@ -22,7 +22,7 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 
 # Copy CCM code to local directory for building
 COPY . /tmp
-RUN cd tmp 
+RUN ls -l 
 RUN  VERSION=$(git rev-parse --short HEAD)
 # version info
 RUN pwd
