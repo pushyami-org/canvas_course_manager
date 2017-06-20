@@ -23,7 +23,7 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 # Copy CCM code to local directory for building
 COPY . /tmp
 # version info
-
+RUN pwd
 RUN touch ./src/main/webapp/build.txt \
     echo 'hello' >> ./src/main/webapp/build.txt
 
