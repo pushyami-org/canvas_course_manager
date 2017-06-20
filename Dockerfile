@@ -24,6 +24,8 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 COPY . /tmp
 # version info
 RUN pwd
+RUN cd ./src/main/webapp \
+   && ls -l
 RUN touch ./src/main/webapp/build.txt \
     echo 'hello' >> ./src/main/webapp/build.txt
 
