@@ -22,14 +22,13 @@ RUN git clone --branch 1.6 https://github.com/tl-its-umich-edu/lti-utils \
 
 # Copy CCM code to local directory for building
 COPY . /tmp
+RUN cd tmp 
+RUN  VERSION=$(git rev-parse --short HEAD)
 # version info
 RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
 RUN \
-  VERSION=$(git rev-parse --short HEAD) && \
-  DATE=$(date +%Y-%m-%dT%H:%M:%S) && \
-  if ! [[ -z "`git status -s`" ]]; then VERSION="!! DIRTY ${VERSION}"; fi && \
   sed -i "s/@@__VERSION__@@/${VERSION}/g;s/@@__BUILT__@@/${DATE}/g" ./src/main/webapp/build.txt
 
 
