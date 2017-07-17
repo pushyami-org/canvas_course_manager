@@ -37,7 +37,8 @@ RUN cd ./src/main/webapp \
 
 #RUN rm -rf build.txt
 RUN \
-   echo 'Hello' >> ./src/main/webapp/build.txt
+   echo $OPENSHIFT_BUILD_NAMESPACE >> ./src/main/webapp/build.txt
+   
 RUN cat ./src/main/webapp/build.txt
 RUN pwd
 RUN ls -la
