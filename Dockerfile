@@ -41,6 +41,7 @@ RUN \
   echo 'Hello' >> build.txt
 RUN cat build.txt
 RUN pwd
+RUN ENV
 
 # Build CCM and place the resulting war in the tomcat dir.
 RUN mvn clean install \
