@@ -35,7 +35,7 @@ RUN pwd
 RUN cd ./src/main/webapp \
    && ls -l
 
-RUN rm -rf build.txt
+#RUN rm -rf build.txt
 RUN \
   touch build.txt && \
   echo 'Hello' >> build.txt
