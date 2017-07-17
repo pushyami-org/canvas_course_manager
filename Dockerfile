@@ -56,6 +56,7 @@ RUN apt-get remove -y maven openjdk-8-jdk git \
  #	&& unzip yjp-2017.02-b59.zip
 
 WORKDIR /usr/local/tomcat/webapps
+RUN pwd
 
 # Set Opts, including paths for the CCM properties.
 ENV JAVA_OPTS="-server \
