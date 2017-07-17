@@ -38,7 +38,7 @@ RUN cd ./src/main/webapp \
 RUN rm -rf build.txt
 RUN \
   touch build.txt && \
-  echo '$OPENSHIFT_BUILD_NAME' >> build.txt
+  echo 'Hello' >> build.txt
 RUN cat build.txt
 RUN pwd
 
