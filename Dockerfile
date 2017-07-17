@@ -37,7 +37,7 @@ RUN cd ./src/main/webapp \
 
 #RUN rm -rf build.txt
 RUN \
-  touch build.txt && \
+  touch ./src/main/webapp/build.txt && \
   echo 'Hello' >> build.txt
 RUN cat build.txt
 RUN pwd
