@@ -1,1 +1,2 @@
 
+  build_name:{name} || build_namespace:{namespace} || git_branch:{git} || git_ref:{branch} || git_commit{commit}
