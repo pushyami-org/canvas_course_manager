@@ -85,4 +85,5 @@ ENV JPDA_ADDRESS="5009"
 ENV JPDA_TRANSPORT="dt_socket"
 
 # Launch Tomcat
-CMD ["./run.sh"]
+CMD cp /usr/share/ccm-props/* /usr/local/tomcat/conf/; \
+catalina.sh jpda run
