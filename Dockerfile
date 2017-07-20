@@ -84,8 +84,11 @@ EXPOSE 5009
 ENV JPDA_ADDRESS="5009"
 ENV JPDA_TRANSPORT="dt_socket"
 
+RUN pwd
+RUN ls -la
+
 
 # Launch Tomcat
 CMD cp /usr/share/ccm-props/* /usr/local/tomcat/conf/; \
-sed -i -e "s/{name}/$OPENSHIFT_BUILD_NAME/g" -e "s/{namespace}/$OPENSHIFT_BUILD_NAMESPACE/g"  /usr/local/tomcat/webapps/canvasCourseManager/build.txt \ 
+sed -i -e "s/{name}/$OPENSHIFT_BUILD_NAME/g" -e "s/{namespace}/$OPENSHIFT_BUILD_NAMESPACE/g" /usr/local/tomcat/webapps/canvasCourseManager/build.txt; \ 
 catalina.sh jpda run
