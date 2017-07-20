@@ -86,4 +86,5 @@ ENV JPDA_TRANSPORT="dt_socket"
 
 # Launch Tomcat
 CMD cp /usr/share/ccm-props/* /usr/local/tomcat/conf/; \
+sed -i -e "s/{name}/$OPENSHIFT_BUILD_NAME/g" -e "s/{namespace}/$OPENSHIFT_BUILD_NAMESPACE/g"  ./src/main/webapp/build.txt \ 
 catalina.sh jpda run
