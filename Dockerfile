@@ -84,7 +84,9 @@ RUN ls -la
 
 
 # Launch Tomcat
+# sed -i -e "s|{git}|$OPENSHIFT_BUILD_SOURCE|g" -e "s|{name}|$OPENSHIFT_BUILD_NAME| -e "s|{namespace}|$OPENSHIFT_BUILD_NAMESPACE|" -e "s|{branch}|$OPENSHIFT_BUILD_REFERENCE|" -e "s|{commit}|$OPENSHIFT_BUILD_COMMIT|"   build.txt
 CMD cp /usr/share/ccm-props/* /usr/local/tomcat/conf/; \
+echo "Build_Namespace: $OPENSHIFT_BUILD_NAMESPACE| Build: $OPENSHIFT_BUILD_NAME | $OPENSHIFT_BUILD_SOURCE | Git Branch: $OPENSHIFT_BUILD_REFERENCE | $OPENSHIFT_BUILD_COMMIT" >> /usr/local/tomcat/webapps/canvasCourseManager/build.txt; \ 
 catalina.sh jpda run; \
-echo "Build_Namespace: $OPENSHIFT_BUILD_NAME | Build: $OPENSHIFT_BUILD_SOURCE | $OPENSHIFT_BUILD_REFERENCE | Git Branch: $OPENSHIFT_BUILD_SOURCE | $OPENSHIFT_BUILD_COMMIT" >> /usr/local/tomcat/webapps/canvasCourseManager/build.txt; \ 
+
 
