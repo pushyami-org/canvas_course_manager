@@ -85,4 +85,4 @@ ENV JPDA_ADDRESS="5009"
 ENV JPDA_TRANSPORT="dt_socket"
 
 # Launch Tomcat
-CMD run.sh
+CMD ["./run.sh"]
